@@ -15,15 +15,13 @@ enum AproxLagrangeErr_e{
 };
 
 class AproxLagrange {
-    double range_l;
-    double range_r;
     std::vector<double> x;
     std::vector<double> f_x;
 
     double calc_F_i(double x, unsigned ind);
 
 public:
-    AproxLagrange(double range_l, double range_r);
+    AproxLagrange() = default;
 
     AproxLagrangeErr_e Init(std::vector<double> x, std::vector<double> f_x);
 

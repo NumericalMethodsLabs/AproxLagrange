@@ -10,11 +10,6 @@ static double fact(unsigned n) {
     return n * fact(n - 1);
 }
 
-AproxLagrange::AproxLagrange(double range_l, double range_r) {
-    this->range_l = range_l;
-    this->range_r = range_r;
-}
-
 AproxLagrangeErr_e AproxLagrange::Init(std::vector<double> x, std::vector<double> f_x) {
     AproxLagrangeErr_e err = ERR_OK;
     if (x.size() != f_x.size())
@@ -50,9 +45,8 @@ std::valarray<double> AproxLagrange::CalcInPoints(std::valarray<double> p) {
 }
 
 double AproxLagrange::CalcError(double M, double p) {
-    double retv = 0, omega = 1;
+    double omega = 1;
     for (auto _x : this->x)
         omega *= (p - _x);
-    retv = M / fact(this->x.size() + 1) * fabs(omega);
-    return retv;
+    return M / fact(this->x.size() + 1) * fabs(omega);
 }
