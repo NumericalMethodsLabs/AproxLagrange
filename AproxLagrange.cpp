@@ -4,6 +4,12 @@
 
 #include "AproxLagrange.h"
 
+static double fact(unsigned n) {
+    if (n == 1)
+        return 1;
+    return n * fact(n - 1);
+}
+
 AproxLagrange::AproxLagrange(double range_l, double range_r) {
     this->range_l = range_l;
     this->range_r = range_r;
@@ -36,9 +42,17 @@ double AproxLagrange::CalcInPoint(double p) {
     return retv;
 }
 
-std::valarray<double> AproxLagrange::CalcInPoint(std::valarray<double> p) {
+std::valarray<double> AproxLagrange::CalcInPoints(std::valarray<double> p) {
     std::valarray<double> retv(p.size());
     for (unsigned i = 0; i < p.size(); ++i)
         retv[i] = CalcInPoint(p[i]);
+    return retv;
+}
+
+double AproxLagrange::CalcError(double M, double p) {
+    double retv = 0, omega = 1;
+    for (auto _x : this->x)
+        omega *= (p - _x);
+    retv = M / fact(this->x.size() + 1) * fabs(omega);
     return retv;
 }

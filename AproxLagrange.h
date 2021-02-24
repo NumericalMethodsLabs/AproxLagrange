@@ -5,6 +5,7 @@
 #ifndef INTERPOLATION_APROXLAGRANGE_H
 #define INTERPOLATION_APROXLAGRANGE_H
 
+#include <cmath>
 #include <vector>
 #include <valarray>
 
@@ -28,7 +29,9 @@ public:
 
     double CalcInPoint(double p);
 
-    std::valarray<double> CalcInPoint(std::valarray<double> p);
+    std::valarray<double> CalcInPoints(std::valarray<double> p);
+
+    double CalcError(double M, double p);
 };
 
 #endif //INTERPOLATION_APROXLAGRANGE_H
