@@ -11,9 +11,9 @@ static double fact(unsigned n) {
 }
 
 AproxLagrangeErr_e AproxLagrange::Init(std::vector<double> x, std::vector<double> f_x) {
-    AproxLagrangeErr_e err = ERR_OK;
+    AproxLagrangeErr_e err = AL_ERR_OK;
     if (x.size() != f_x.size())
-        err = ERR_SIZE_ERR;
+        err = AL_ERR_SIZE_ERR;
     else {
         this->x = x;
         this->f_x = f_x;

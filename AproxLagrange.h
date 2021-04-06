@@ -10,8 +10,8 @@
 #include <valarray>
 
 enum AproxLagrangeErr_e{
-        ERR_OK = 0U,
-        ERR_SIZE_ERR
+        AL_ERR_OK = 0U,
+        AL_ERR_SIZE_ERR
 };
 
 class AproxLagrange {
